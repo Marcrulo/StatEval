@@ -1,0 +1,55 @@
+load('armdata.RData')
+
+# Matrices
+Mx = matrix(0,1600,10)
+My = matrix(0,1600,10)
+Mz = matrix(0,1600,10)
+for (p in 1:10) { # person
+  for (e in 1:16) { # experiment
+    for (s in 1:100){ # step
+      sum_x=0
+      sum_y=0
+      sum_z=0
+      for (r in 1:10){ # rep
+        sum_x = sum_x + armdata[[e]][[p]][[r]][s,1]
+        sum_y = sum_y + armdata[[e]][[p]][[r]][s,2]
+        sum_z = sum_z + armdata[[e]][[p]][[r]][s,3]
+        
+      }
+      Mx[(e-1)*100+s,p]=sum_x/10 # M[row,column]
+      My[(e-1)*100+s,p]=sum_y/10 # M[row,column]
+      Mz[(e-1)*100+s,p]=sum_z/10 # M[row,column]
+    }
+  }
+}
+
+
+# Exp=e, dimension='y' 
+e=16
+start=(e-1)*100+1
+end=e*100
+M=as.data.frame(My[start:end,])
+#M<-M[,-c(5)]
+kruskal.test(M)
+boxplot(M)#,main='Boxplot - Exp 16, Person 9')
+
+
+# Shaipro.test if p-value is under 0.05 the data is not normal distributed
+shapiro.test(M$V1)
+shapiro.test(M$V2)
+shapiro.test(M$V3)
+shapiro.test(M$V4)
+shapiro.test(M$V5)
+shapiro.test(M$V6)
+shapiro.test(M$V7)
+shapiro.test(M$V8)
+shapiro.test(M$V9)
+shapiro.test(M$V10)
+
+
+
+
+qqnorm(M$V1, pch = 1, frame = FALSE)
+qqline(M$V1, col = "steelblue", lwd = 2)
+#qqplot(M$V1)
+

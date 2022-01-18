@@ -1,0 +1,57 @@
+Missing values:
+- forklar hvorfor der kan findes missing values
+- smooth.spline / interpolation
+- sammenlign data med og uden missing values (plots)
+- eksempel (exp=13, pers=9, rep=1)
+
+Dixon test og outliers:
+- forklar at der findes outliers
+- hvad definerer vi som en outliers?
+- umiddelbart er outliers kun farlige hvis de er alt for ekstreme; og dermed misvisende
+- men vi antager dog alligevel først, at der også findes 'mindre' outliers
+- outlier antagelse: hvert step (1-100) i det gennemsnitlige trajectory for hver person for et eksperiment, skulle ikke variere signifikant fra de andre. Outliers er defineret ved en Dixon test med signifikans-level på x%
+- vis "outliers" baseret på Dixon-testen
+- hvorfor virker Dixon-testen ikke som forventet? (vi kan ikke regne med at hvert enkelt trajectory alligner punktvis)
+- (desuden er Dixon måske jævnt følsom)
+- anyway, vi kan bruge punktvis Dixon-test til at vurdere hvilke steder i trajectory'et, hvor der er variation. Fx hvordan nogle personer har det med at bevæge sig en smule baglens (x-akse), når de bevæger objektet
+- [diskussion: hvordan kunne vi have brugt Dixon-testen anderledes?]
+- alternativ løsning: erstat den ekstreme outlier manuelt, men det gennemsnitlige trajectory (af de 9 resterende)
+
+Normalfordeling:
+- normalfordeling af: det gennemsnitlige trajectory for hvert person+eksperiment (i enten x,y eller z)
+- vi antager ikke normalfordeling; dette kan bekræftes/afvises ved en Shapiro-test
+- vi kommer i hvert fald selv frem til, at der ikke ses nogen normalfordeling
+
+Kruskal Wallis :
+- Mål: Er der signifikant forskel mellem forskellige personers kast?
+- (Kruskal vs ANOVA)
+- Vis tabel af data (100x10)=(row, column)
+- Resultat af Kruskal Wallis (understøttet af boxplot)
+  - afhængigt af eksperiment
+  - visse personer er 'outliers' (se boxplot)
+  - fjern eventuelt 'outlier'-personer, og se hvilken påvirkning det har
+
+Multinominal linear regression:
+- multiclass-output, continuous-value-input
+- predict experiment based on trajectory-coordinates
+- x/y vs x/z vs y/z vs x/y/z
+- Classification table (analysér)
+- Diskutér accuracy; godt eller dårligt?
+
+K nearest neigbours:
+- multiclass-output, continuous-value-input
+- predict experiment based on trajectory-coordinates
+- x/y vs x/z vs y/z vs x/y/z
+- ...
+
+Cross-validation:
+- test forskellige K-folds
+- (interessante) resultater?
+
+Comparing classifiers:
+- McNemar (samt antagelser)
+- Sammenlign MLR og KNN: hvilken er bedst, og hvorfor?
+
+
+
+

@@ -1,0 +1,4 @@
+(Første lag) Data kan deles op i 16 eksperimenter
+(Andet lag)  For hvert af de 16 eksperimenter, kan data deles op i de 10 forskellige testpersoner
+(Tredje lag) For hver af de 10 testpersoner, kan data deles op i 10 forskellige 'trajectories'
+             hvor hvert 'trajectory' er en 100x3 matrix
